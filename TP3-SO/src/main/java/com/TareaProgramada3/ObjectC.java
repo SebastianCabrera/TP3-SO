@@ -10,7 +10,7 @@ public class ObjectC {
     private int second;
     private Object value;
     private int key;
-    private int tiempoVida;
+    private int entryLifetime;
 
     public void setAge(int hour, int minute, int second) {
         this.hour = hour;
@@ -46,8 +46,12 @@ public class ObjectC {
         this.key = key;
     }
 
-    public void setTiempoVida(int tiempoVida) {
-        this.tiempoVida = tiempoVida;
+    public int getEntryLifetime() {
+        return entryLifetime;
+    }
+    
+    public void setEntryLifetime(int entryLifetime) {
+        this.entryLifetime = entryLifetime;
     }
 
 
