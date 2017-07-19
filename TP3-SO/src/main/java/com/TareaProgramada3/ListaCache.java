@@ -8,35 +8,98 @@ import java.util.ArrayList;
 public class ListaCache implements Cache<Integer, ObjectC>{
 
     ArrayList<ObjectC> list;
-    String nombreLista;
-    int tiempoObjeto;
-    int tiempoCache;
+    private String tipo;
+    private int tiempo;
+    private int tamano;
+    private int vida;
+    private int tiempoElemento;
+    private final int VIDA_DEFAULT = -1;
+    private final int TIEMPO_DEFUALT = 3600;
+    private final int DEFAULT_ELEMENTO = 1;
 
 
-    public ListaCache(String nombreLista)
+    public ListaCache(){}
+
+    public ListaCache(String id, int tamanoParam, int vidaParam, int elementoParam)
     {
+        tipo = id;
+        tiempo = TIEMPO_DEFUALT;
+        tamano = tamanoParam;
 
+        tiempoElemento = elementoParam;
+    }
+
+    public ListaCache(int tamanoParam, String id, int tiempoParam, int elementoParam )
+    {
+        tipo = id;
+        vida = VIDA_DEFAULT;
+        tamano = tamanoParam;
+
+
+        tiempoElemento = elementoParam;
+    }
+
+    public ListaCache(int tamanoParam, String id, int elementoParam)
+    {
+        tipo = id;
+        vida = VIDA_DEFAULT;
+        tiempo = TIEMPO_DEFUALT;
+        tamano = tamanoParam;
+
+        tiempoElemento = elementoParam;
+    }
+
+    //sin tiempo por elemento
+    public ListaCache(int tamanoParam, int vidaParam,int tiempoParam,String id)
+    {
+        tiempoElemento = DEFAULT_ELEMENTO;
+        tipo = id;
+        tamano = tamanoParam;
+        vida = vidaParam;
+        tiempo = tiempoParam;
+    }
+
+    public ListaCache(String id, int tamanoParam, int vidaParam)
+    {
+        tiempoElemento = DEFAULT_ELEMENTO;
+        tipo = id;
+        tiempo = TIEMPO_DEFUALT;
+        tamano = tamanoParam;
+    }
+
+    public ListaCache(int tamanoParam, int tiempoParam,  String id)
+    {
+        tiempoElemento = DEFAULT_ELEMENTO;
+        tipo = id;
+        vida = VIDA_DEFAULT;
+        tamano = tamanoParam;
+    }
+
+    public ListaCache(int tamanoParam, String id)
+    {
+        tiempoElemento = DEFAULT_ELEMENTO;
+        tipo = id;
+        vida = VIDA_DEFAULT;
+        tiempo = TIEMPO_DEFUALT;
+        tamano = tamanoParam;
     }
 
 
-    public ListaCache()
-    {
-
-    }
-
-    void destruirCache()
-    {
-
-    }
-
-    void matarObjeto(int key)
-    {
-
-    }
+    public void destruirCache()
+    {}
 
     String buscarPorTitulo(String titulo)
     {
         return null;
+    }
+
+    String buscarPorID(String id)
+    {
+        return null;
+    }
+
+    void matarObjeto(int key)
+    {
 
     }
 
