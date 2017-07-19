@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Sebastián on 19/7/2017.
  */
-public abstract class ListaCache implements Cache{
+public class ListaCache implements Cache<Integer, ObjectC>{
 
     ArrayList<ObjectC> list;
     String nombreLista;
@@ -51,25 +51,26 @@ public abstract class ListaCache implements Cache{
     public String getName()
     {
         return null;
-
     }
 
-    public ObjectC get(int var1) //Supongo que aquí sería cambiar V por object y K por int, verdad?
+    public ObjectC get(Integer var1) //Supongo que aquí sería cambiar V por object y K por int, verdad?
     {
         return null;
 
     }
 
-    public void put(int var1, ObjectC var2)
+    public void put(Integer var1, ObjectC var2)
     {
 
     }
 
-    public void evict(int var1)
+    public void evict(Integer var1)
     {
 
     }
+
     public void clear()
     {
+        System.out.println("Se usó el clear de ListaCache.");
     }
 }
