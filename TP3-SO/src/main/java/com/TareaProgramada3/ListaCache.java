@@ -14,7 +14,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     private int vida;
     private int tiempoElemento;
     private final int VIDA_DEFAULT = -1;
-    private final int TIEMPO_DEFUALT = 3600;
+    private final int TIEMPO_DEFAULT = 3600;
     private final int DEFAULT_ELEMENTO = 1;
 
 
@@ -23,7 +23,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     public ListaCache(String id, int tamanoParam, int vidaParam, int elementoParam)
     {
         tipo = id;
-        tiempo = TIEMPO_DEFUALT;
+        tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
 
         tiempoElemento = elementoParam;
@@ -43,7 +43,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     {
         tipo = id;
         vida = VIDA_DEFAULT;
-        tiempo = TIEMPO_DEFUALT;
+        tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
 
         tiempoElemento = elementoParam;
@@ -63,7 +63,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     {
         tiempoElemento = DEFAULT_ELEMENTO;
         tipo = id;
-        tiempo = TIEMPO_DEFUALT;
+        tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
     }
 
@@ -80,7 +80,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         tiempoElemento = DEFAULT_ELEMENTO;
         tipo = id;
         vida = VIDA_DEFAULT;
-        tiempo = TIEMPO_DEFUALT;
+        tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
     }
 
@@ -116,7 +116,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         return null;
     }
 
-    public ObjectC get(Integer var1) //Supongo que aquí sería cambiar V por object y K por int, verdad?
+    public ObjectC get(Integer var1)
     {
         return null;
 
