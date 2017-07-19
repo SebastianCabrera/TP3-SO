@@ -5,12 +5,15 @@ package com.TareaProgramada3;
  */
 public class ObjectC {
 
-    private int hour;
-    private int minute;
-    private int second;
-    private Object value;
-    private int key;
-    private int entryLifetime;
+    private int hour=0;
+    private int minute=0;
+    private int second=0;
+    private Object value=0;
+    private int key=0;
+    private int entryLifetime=0;
+
+    public ObjectC()
+    {}
 
     public void setAge(int hour, int minute, int second) {
         this.hour = hour;

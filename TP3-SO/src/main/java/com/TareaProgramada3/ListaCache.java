@@ -1,5 +1,6 @@
 package com.TareaProgramada3;
-
+import java.lang.Runnable;
+import java.lang.Thread;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     ArrayList<ObjectC> list;
     private String tipo;
     private int tiempo;
-    private int tamano;
+    private int tamano = 10;
     private int vida;
     private int tiempoElemento;
     private final int VIDA_DEFAULT = -1;
@@ -25,8 +26,9 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         tipo = id;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
-
         tiempoElemento = elementoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
     }
 
     public ListaCache(int tamanoParam, String id, int tiempoParam, int elementoParam )
@@ -34,9 +36,9 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         tipo = id;
         vida = VIDA_DEFAULT;
         tamano = tamanoParam;
-
-
         tiempoElemento = elementoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
     }
 
     public ListaCache(int tamanoParam, String id, int elementoParam)
@@ -45,8 +47,9 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         vida = VIDA_DEFAULT;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
-
         tiempoElemento = elementoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
     }
 
     //sin tiempo por elemento
@@ -57,6 +60,8 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         tamano = tamanoParam;
         vida = vidaParam;
         tiempo = tiempoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
     }
 
     public ListaCache(String id, int tamanoParam, int vidaParam)
@@ -65,6 +70,8 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         tipo = id;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
     }
 
     public ListaCache(int tamanoParam, int tiempoParam,  String id)
@@ -73,6 +80,8 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         tipo = id;
         vida = VIDA_DEFAULT;
         tamano = tamanoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
     }
 
     public ListaCache(int tamanoParam, String id)
@@ -82,14 +91,25 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         vida = VIDA_DEFAULT;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
     }
 
 
     public void destruirCache()
-    {}
+    {
+        if(vida!=VIDA_DEFAULT)
+        {}
+        else
+        {
+            Thread limpiar = new Thread();
+            limpiar.start();
+        }
+    }
 
     String buscarPorTitulo(String titulo)
     {
+
         return null;
     }
 
@@ -113,27 +133,42 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     public String getName()
     {
-        return null;
+        return tipo;
     }
 
     public ObjectC get(Integer var1)
     {
-        return null;
-
+        ObjectC retornoC = new ObjectC();
+        try
+        {
+            retornoC=list.get(var1);//posiblemente hay que convertir Integer a int pero no estoy seguro
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+            System.out.println("El número que se utilizó no está en el rango permitido.");
+        }
+        return retornoC;
     }
 
-    public void put(Integer var1, ObjectC var2) //Cuando se ingrese un objeto, se deben actualizar su hora, minuto y segundo
+    public void put(Integer llave, ObjectC objeto) //Cuando se ingrese un objeto, se deben actualizar su hora, minuto y segundo
     {
-
+        System.out.println("Se usó el put de ListaCache.");
     }
 
     public void evict(Integer var1)
     {
-
+        try
+        {
+            list.remove(var1);//posiblemente hay que convertir Integer a int pero no estoy seguro
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+            System.out.println("El número que se utilizó no está en el rango permitido.");
+        }
     }
 
     public void clear()
     {
-        System.out.println("Se usó el clear de ListaCache.");
+        list.clear();
     }
 }
