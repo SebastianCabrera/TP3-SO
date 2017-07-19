@@ -13,7 +13,30 @@ public class ListaCacheLRU extends ListaCache{
     //Regresa la key asignada al objeto que lleva mas tiempo sin ser referenciado en la lista
     public int lru()
     {
-        return 0;
+        int eLife = 0;
+        int key = 0;
+        if(!list.isEmpty())
+        {
+            for(int i = 0; i<list.size(); i++)
+            {
+                if(i == 0) //Primera iteracion
+                {
+                    key=list.get(i).getKey();
+                }
+                else
+                {
+                    if(list.get(i).getEntryLifetime() > eLife) //Es un contador, por lo que se debe elegir el más grande
+                    {
+                        key=list.get(i).getKey();
+                    }
+                }
+            }
+            return key;
+        }
+        else
+        {
+            return -1;
+        }
     }
 
     public void put(Integer var1, ObjectC var2)
