@@ -30,7 +30,7 @@ public class ListaCacheFIFO extends ListaCache{
                 }
                 else
                 {
-                    if(list.get(i).getHour() < hour) //Se elige la hora menor
+                    if(list.get(i).getHour() < hour) //Se elige el objeto con la hora menor
                     {
                         hour=list.get(i).getHour();
                         minute=list.get(i).getMinute();
@@ -39,7 +39,7 @@ public class ListaCacheFIFO extends ListaCache{
                     }
                     else if(list.get(i).getHour() == hour) //Si tienen la misma hora se revisan los minutos
                     {
-                        if(list.get(i).getMinute() < minute) //Se elige el minuto menor
+                        if(list.get(i).getMinute() < minute) //Se elige el objeto con el minuto menor
                         {
                             minute=list.get(i).getMinute();
                             second=list.get(i).getSecond();
@@ -47,7 +47,7 @@ public class ListaCacheFIFO extends ListaCache{
                         }
                         else if(list.get(i).getMinute() == minute) //Si tienen el mismo minuto se revisan los segundos
                         {
-                            if(list.get(i).getSecond() < second)
+                            if(list.get(i).getSecond() < second) //Se elige el objeto con el segundo menor
                             {
                                 second=list.get(i).getSecond();
                                 key=list.get(i).getKey();

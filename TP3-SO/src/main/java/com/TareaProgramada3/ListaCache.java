@@ -122,7 +122,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     }
 
-    public void put(Integer var1, ObjectC var2)
+    public void put(Integer var1, ObjectC var2) //Cuando se ingrese un objeto, se deben actualizar su hora, minuto y segundo
     {
 
     }
