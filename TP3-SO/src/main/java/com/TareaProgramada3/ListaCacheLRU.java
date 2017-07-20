@@ -1,5 +1,7 @@
 package com.TareaProgramada3;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by Sebastián on 19/7/2017.
  */
@@ -13,7 +15,7 @@ public class ListaCacheLRU extends ListaCache{
     //Regresa la key asignada al objeto que lleva mas tiempo sin ser referenciado en la lista
     public int lru()
     {
-        int eLife = 0;
+        LocalDateTime eLifeTime = null;
         int key = 0;
         if(!list.isEmpty())
         {
@@ -21,14 +23,14 @@ public class ListaCacheLRU extends ListaCache{
             {
                 if(i == 0) //Primera iteracion
                 {
-                    //Falta investigar sobre uso de Timer
+                    eLifeTime = list.get(i).geteLifeTime();
                     key=list.get(i).getKey();
                 }
                 else
                 {
-                    if(true) //Es un contador, por lo que se debería elegir el más grande
+                    if(list.get(i).geteLifeTime().isBefore(eLifeTime)) //Se elige si lleva mas tiempo en la lista sin ser referenciado
                     {
-                        //Falta investigar sobre uso de Timer
+                        eLifeTime = list.get(i).geteLifeTime();
                         key=list.get(i).getKey();
                     }
                 }
@@ -53,9 +55,9 @@ public class ListaCacheLRU extends ListaCache{
                 {
                     var2.setKey(var1);
                     var2.setAge();
-                    var2.myTimer.cancel();
-                    var2.myTimer.schedule(task, tiempoVidaElemento); //Se eapera el tiempo del vida del elemento para eliminarlo
+                    list.get(i).myTimer.cancel(); //Se cancela el Timer del objeto que se va a sacar de la lista
                     list.set(i, var2);
+                    list.get(i).myTimer.schedule(new TTask(i, this.list), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
                 }
             }
         }
@@ -63,9 +65,14 @@ public class ListaCacheLRU extends ListaCache{
         {
             var2.setKey(var1);
             var2.setAge();
-            var2.myTimer.cancel();
-            var2.myTimer.schedule(task, tiempoVidaElemento);
             list.add(var2);
+            for(int i=0; i<tamano; i++)
+            {
+                if(list.get(i) == var2)
+                {
+                    list.get(i).myTimer.schedule(new TTask(i, this.list), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
+                }
+            }
         }
         System.out.println("Se usó el put de ListaCache.");
     }

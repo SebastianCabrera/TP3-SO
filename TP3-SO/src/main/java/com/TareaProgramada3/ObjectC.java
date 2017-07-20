@@ -12,6 +12,7 @@ public class ObjectC {
     //private int minute=0;
     //private int second=0;
     LocalDateTime now;
+    LocalDateTime eLifeTime;
     private Object value=0;
     private int key=0;
     private int entryLifetime=0; //Esto debería estara aqui? Ya se define en ListaCache
@@ -19,6 +20,16 @@ public class ObjectC {
 
     public ObjectC()
     {}
+
+    public void seteLifeTime() //Que se guarde la hora también cada vez que es refrerenciado
+    {
+        eLifeTime = LocalDateTime.now();
+    }
+
+    public LocalDateTime geteLifeTime()
+    {
+        return eLifeTime;
+    }
 
     public void setAge()
     {

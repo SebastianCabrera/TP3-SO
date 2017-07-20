@@ -43,9 +43,9 @@ public class ListaCacheRandom extends ListaCache{
                 {
                     var2.setKey(var1);
                     var2.setAge();
-                    var2.myTimer.cancel();
-                    var2.myTimer.schedule(task, tiempoVidaElemento); //Se eapera el tiempo del vida del elemento para eliminarlo
+                    list.get(i).myTimer.cancel(); //Se cancela el Timer del objeto que se va a sacar de la lista
                     list.set(i, var2);
+                    list.get(i).myTimer.schedule(new TTask(i, this.list), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
                 }
             }
         }
@@ -53,9 +53,14 @@ public class ListaCacheRandom extends ListaCache{
         {
             var2.setKey(var1);
             var2.setAge();
-            var2.myTimer.cancel();
-            var2.myTimer.schedule(task, tiempoVidaElemento);
             list.add(var2);
+            for(int i=0; i<tamano; i++)
+            {
+                if(list.get(i) == var2)
+                {
+                    list.get(i).myTimer.schedule(new TTask(i, this.list), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
+                }
+            }
         }
         System.out.println("Se usó el put de ListaCache.");
     }

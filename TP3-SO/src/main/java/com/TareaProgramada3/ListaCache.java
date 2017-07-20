@@ -7,7 +7,7 @@ import java.util.TimerTask;
 /**
  * Created by Sebastián on 19/7/2017.
  */
-public class ListaCache implements Cache<Integer, ObjectC>{
+public class ListaCache implements Cache<Integer, ObjectC> {
 
     ArrayList<ObjectC> list;
     private String id;
@@ -71,7 +71,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         }
     }
 
-    String buscarPorTitulo(String titulo)
+    String buscarPorTitulo(String titulo) //Al final de estas dos funciones se debe volver a guardar la hora en el eLifeTime del objeto
     {
 
         return null;
@@ -133,6 +133,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
             {
                 if(list.get(contador).getKey()==var1)
                 {
+                    list.get(contador).myTimer.cancel(); //Se cancela su contador
                     list.remove(contador);//posiblemente hay que convertir Integer a int pero no estoy seguro
                 }
             }
@@ -145,13 +146,11 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     public void clear()
     {
+        for(int i=0; i<tamano; i++)
+        {
+            list.get(i).myTimer.cancel(); //Se cancela el Timer de todos los objetos
+        }
         list.clear();
     }
 
-    TimerTask task = new TimerTask() { //Falta encontrar forma correcta de implementar esto
-        @Override
-        public void run() {
-
-        }
-    };
 }
