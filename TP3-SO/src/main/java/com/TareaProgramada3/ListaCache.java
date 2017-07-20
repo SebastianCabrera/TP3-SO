@@ -10,7 +10,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     ArrayList<ObjectC> list;
     private String id;
-    private int tamano = 10;
+    public int tamano = 10;
     private int tiempoVidaCache;
     private int tiempoVidaElemento;
     private final int tiempoVidaCache_DEFAULT = -1; //Infinito

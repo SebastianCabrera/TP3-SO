@@ -16,7 +16,7 @@ public class ListaCacheRandom extends ListaCache{
     public int random()
     {
         int key = 0;
-        int max = list.size();
+        int max = tamano;
         int randomNumber = 0;
         if(!list.isEmpty())
         {
