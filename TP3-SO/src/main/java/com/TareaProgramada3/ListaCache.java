@@ -9,21 +9,21 @@ import java.util.ArrayList;
 public class ListaCache implements Cache<Integer, ObjectC>{
 
     ArrayList<ObjectC> list;
-    private String tipo;
+    private String id;
     private int tiempo;
     private int tamano = 10;
     private int vida;
     private int tiempoElemento;
     private final int VIDA_DEFAULT = -1;
-    private final int TIEMPO_DEFAULT = 3600;
-    private final int DEFAULT_ELEMENTO = 1;
+    private final int TIEMPO_DEFAULT = 3600; //Es decir, una hora de vida como máximo para cada objeto en el cache
+    private final int DEFAULT_ELEMENTO = 1; //Un segundo como default?
 
 
     public ListaCache(){}
 
-    public ListaCache(String id, int tamanoParam, int vidaParam, int elementoParam)
+    public ListaCache(String idParam, int tamanoParam, int vidaParam, int elementoParam)
     {
-        tipo = id;
+        id = idParam;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
         tiempoElemento = elementoParam;
@@ -31,9 +31,9 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         this.destruirCache();
     }
 
-    public ListaCache(int tamanoParam, String id, int tiempoParam, int elementoParam )
+    public ListaCache(int tamanoParam, String idParam, int tiempoParam, int elementoParam )
     {
-        tipo = id;
+        id = idParam;
         vida = VIDA_DEFAULT;
         tamano = tamanoParam;
         tiempoElemento = elementoParam;
@@ -41,9 +41,9 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         this.destruirCache();
     }
 
-    public ListaCache(int tamanoParam, String id, int elementoParam)
+    public ListaCache(int tamanoParam, String idParam, int elementoParam)
     {
-        tipo = id;
+        id = idParam;
         vida = VIDA_DEFAULT;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
@@ -53,10 +53,10 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     }
 
     //sin tiempo por elemento
-    public ListaCache(int tamanoParam, int vidaParam,int tiempoParam,String id)
+    public ListaCache(int tamanoParam, int vidaParam,int tiempoParam,String idParam)
     {
         tiempoElemento = DEFAULT_ELEMENTO;
-        tipo = id;
+        id = idParam;
         tamano = tamanoParam;
         vida = vidaParam;
         tiempo = tiempoParam;
@@ -64,30 +64,30 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         this.destruirCache();
     }
 
-    public ListaCache(String id, int tamanoParam, int vidaParam)
+    public ListaCache(String idParam, int tamanoParam, int vidaParam)
     {
         tiempoElemento = DEFAULT_ELEMENTO;
-        tipo = id;
+        id = idParam;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
 
-    public ListaCache(int tamanoParam, int tiempoParam,  String id)
+    public ListaCache(int tamanoParam, int tiempoParam,  String idParam)
     {
         tiempoElemento = DEFAULT_ELEMENTO;
-        tipo = id;
+        id = idParam;
         vida = VIDA_DEFAULT;
         tamano = tamanoParam;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
 
-    public ListaCache(int tamanoParam, String id)
+    public ListaCache(int tamanoParam, String idParam)
     {
         tiempoElemento = DEFAULT_ELEMENTO;
-        tipo = id;
+        id = idParam;
         vida = VIDA_DEFAULT;
         tiempo = TIEMPO_DEFAULT;
         tamano = tamanoParam;
@@ -113,7 +113,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         return null;
     }
 
-    String buscarPorID(String id)
+    String buscarPorID(String idParam)
     {
         return null;
     }
@@ -123,7 +123,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     }
 
-    String buscarPorId(String id)
+    String buscarPorId(String idParam)
     {
         return null;
 
@@ -133,7 +133,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     public String getName()
     {
-        return tipo;
+        return id;
     }
 
     public ObjectC get(Integer var1)
