@@ -10,30 +10,30 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     ArrayList<ObjectC> list;
     private String id;
-    private int tiempoVidaElemento;
     private int tamano = 10;
     private int tiempoVidaCache;
-    private final int tiempoVidaCache_DEFAULT = -1;
-    private final int TIEMPO_DEFAULT = 3600; //Es decir, una hora de tiempoVidaCache como máximo para cada objeto en el cache
-    private final int DEFAULT_ELEMENTO = 1; //Un segundo como default?
+    private int tiempoVidaElemento;
+    private final int tiempoVidaCache_DEFAULT = -1; //Infinito
+    private final int tiempoVidaElemento_DEFAULT = 3600; //Es decir, una hora de tiempoVidaElemento como máximo para cada objeto en el cache
 
 
-    public ListaCache(){}
 
     public ListaCache(String idParam, int tamanoParam, int tiempoVidaCacheParam)
     {
         id = idParam;
-        tiempoVidaElemento = TIEMPO_DEFAULT;
         tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
 
-    public ListaCache(int tamanoParam, String idParam, int tiempoParam)
+    public ListaCache(int tamanoParam, String idParam, int tiempoVidaElemParam)
     {
         id = idParam;
-        tiempoVidaCache = tiempoVidaCache_DEFAULT;
         tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemParam;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
@@ -41,32 +41,23 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     public ListaCache(int tamanoParam, String idParam)
     {
         id = idParam;
-        tiempoVidaCache = tiempoVidaCache_DEFAULT;
-        tiempoVidaElemento = TIEMPO_DEFAULT;
         tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
 
-    //sin tiempoVidaElemento por elemento
-    public ListaCache(int tamanoParam, int tiempoVidaCacheParam,int tiempoParam,String idParam)
+    public ListaCache(int tamanoParam, int tiempoVidaCacheParam,int tiempoVidaElemParam,String idParam)
     {
         id = idParam;
         tamano = tamanoParam;
         tiempoVidaCache = tiempoVidaCacheParam;
-        tiempoVidaElemento = tiempoParam;
+        tiempoVidaElemento = tiempoVidaElemParam;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
 
-    public ListaCache( int tamanoParam, int tiempoVidaCacheParam,String idParam)
-    {
-        id = idParam;
-        tiempoVidaElemento = TIEMPO_DEFAULT;
-        tamano = tamanoParam;
-        list = new ArrayList<ObjectC>(tamano);
-        this.destruirCache();
-    }
 
     public void destruirCache()
     {
