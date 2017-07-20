@@ -104,7 +104,13 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         ObjectC retornoC = new ObjectC();
         try
         {
-            retornoC=list.get(var1);//posiblemente hay que convertir Integer a int pero no estoy seguro
+            for(int contador =0; contador <list.size();contador++)
+            {
+                if(list.get(contador).getKey()==var1)
+                {
+                    retornoC = list.get(contador);//posiblemente hay que convertir Integer a int pero no estoy seguro
+                }
+            }
         }
         catch(IndexOutOfBoundsException e)
         {
@@ -122,7 +128,13 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     {
         try
         {
-            list.remove(var1);//posiblemente hay que convertir Integer a int pero no estoy seguro
+            for(int contador =0; contador <list.size();contador++)
+            {
+                if(list.get(contador).getKey()==var1)
+                {
+                    list.remove(contador);//posiblemente hay que convertir Integer a int pero no estoy seguro
+                }
+            }
         }
         catch(IndexOutOfBoundsException e)
         {
