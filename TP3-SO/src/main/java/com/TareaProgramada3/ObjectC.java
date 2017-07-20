@@ -1,20 +1,36 @@
 package com.TareaProgramada3;
 
+import java.time.LocalDateTime;
+import java.util.Timer;
+
 /**
  * Created by Sebastián on 19/7/2017.
  */
 public class ObjectC {
 
-    private int hour=0;
-    private int minute=0;
-    private int second=0;
+    //private int hour=0;
+    //private int minute=0;
+    //private int second=0;
+    LocalDateTime now;
     private Object value=0;
     private int key=0;
-    private int entryLifetime=0;
+    private int entryLifetime=0; //Esto debería estara aqui? Ya se define en ListaCache
+    public Timer myTimer = new Timer(true);
 
     public ObjectC()
     {}
 
+    public void setAge()
+    {
+        now = LocalDateTime.now();
+    }
+
+    public LocalDateTime getAge()
+    {
+        return now;
+    }
+
+    /*
     public void setAge(int hour, int minute, int second) {
         this.hour = hour;
         this.minute = minute;
@@ -32,6 +48,7 @@ public class ObjectC {
     public int getSecond() {
         return second;
     }
+    */
 
     public Object getValue() {
         return value;

@@ -2,6 +2,7 @@ package com.TareaProgramada3;
 import java.lang.Runnable;
 import java.lang.Thread;
 import java.util.ArrayList;
+import java.util.TimerTask;
 
 /**
  * Created by Sebastián on 19/7/2017.
@@ -12,7 +13,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     private String id;
     public int tamano = 10;
     private int tiempoVidaCache;
-    private int tiempoVidaElemento;
+    public int tiempoVidaElemento;
     private final int tiempoVidaCache_DEFAULT = -1; //Infinito
     private final int tiempoVidaElemento_DEFAULT = 3600; //Es decir, una hora de tiempoVidaElemento como máximo para cada objeto en el cache
 
@@ -119,7 +120,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
         return retornoC;
     }
 
-    public void put(Integer llave, ObjectC objeto) //Cuando se ingrese un objeto, se deben actualizar su hora, minuto y segundo
+    public void put(Integer llave, ObjectC objeto) //Hay necesidad de implementarla aquí?
     {
         System.out.println("Se usó el put de ListaCache.");
     }
@@ -146,4 +147,11 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     {
         list.clear();
     }
+
+    TimerTask task = new TimerTask() { //Falta encontrar forma correcta de implementar esto
+        @Override
+        public void run() {
+
+        }
+    };
 }
