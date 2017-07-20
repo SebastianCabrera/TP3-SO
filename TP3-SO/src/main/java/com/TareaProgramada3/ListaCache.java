@@ -16,7 +16,7 @@ public class ListaCache implements Cache<Integer, ObjectC>{
     private final int tiempoVidaCache_DEFAULT = -1; //Infinito
     private final int tiempoVidaElemento_DEFAULT = 3600; //Es decir, una hora de tiempoVidaElemento como máximo para cada objeto en el cache
 
-
+    public ListaCache(){}
 
     public ListaCache(String idParam, int tamanoParam, int tiempoVidaCacheParam)
     {
