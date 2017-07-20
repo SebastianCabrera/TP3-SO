@@ -10,75 +10,29 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     ArrayList<ObjectC> list;
     private String id;
-    private int tiempo;
+    private int tiempoVidaElemento;
     private int tamano = 10;
-    private int vida;
-    private int tiempoElemento;
-    private final int VIDA_DEFAULT = -1;
-    private final int TIEMPO_DEFAULT = 3600; //Es decir, una hora de vida como máximo para cada objeto en el cache
+    private int tiempoVidaCache;
+    private final int tiempoVidaCache_DEFAULT = -1;
+    private final int TIEMPO_DEFAULT = 3600; //Es decir, una hora de tiempoVidaCache como máximo para cada objeto en el cache
     private final int DEFAULT_ELEMENTO = 1; //Un segundo como default?
 
 
     public ListaCache(){}
 
-    public ListaCache(String idParam, int tamanoParam, int vidaParam, int elementoParam)
+    public ListaCache(String idParam, int tamanoParam, int tiempoVidaCacheParam)
     {
         id = idParam;
-        tiempo = TIEMPO_DEFAULT;
-        tamano = tamanoParam;
-        tiempoElemento = elementoParam;
-        list = new ArrayList<ObjectC>(tamano);
-        this.destruirCache();
-    }
-
-    public ListaCache(int tamanoParam, String idParam, int tiempoParam, int elementoParam )
-    {
-        id = idParam;
-        vida = VIDA_DEFAULT;
-        tamano = tamanoParam;
-        tiempoElemento = elementoParam;
-        list = new ArrayList<ObjectC>(tamano);
-        this.destruirCache();
-    }
-
-    public ListaCache(int tamanoParam, String idParam, int elementoParam)
-    {
-        id = idParam;
-        vida = VIDA_DEFAULT;
-        tiempo = TIEMPO_DEFAULT;
-        tamano = tamanoParam;
-        tiempoElemento = elementoParam;
-        list = new ArrayList<ObjectC>(tamano);
-        this.destruirCache();
-    }
-
-    //sin tiempo por elemento
-    public ListaCache(int tamanoParam, int vidaParam,int tiempoParam,String idParam)
-    {
-        tiempoElemento = DEFAULT_ELEMENTO;
-        id = idParam;
-        tamano = tamanoParam;
-        vida = vidaParam;
-        tiempo = tiempoParam;
-        list = new ArrayList<ObjectC>(tamano);
-        this.destruirCache();
-    }
-
-    public ListaCache(String idParam, int tamanoParam, int vidaParam)
-    {
-        tiempoElemento = DEFAULT_ELEMENTO;
-        id = idParam;
-        tiempo = TIEMPO_DEFAULT;
+        tiempoVidaElemento = TIEMPO_DEFAULT;
         tamano = tamanoParam;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
 
-    public ListaCache(int tamanoParam, int tiempoParam,  String idParam)
+    public ListaCache(int tamanoParam, String idParam, int tiempoParam)
     {
-        tiempoElemento = DEFAULT_ELEMENTO;
         id = idParam;
-        vida = VIDA_DEFAULT;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
         tamano = tamanoParam;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
@@ -86,19 +40,37 @@ public class ListaCache implements Cache<Integer, ObjectC>{
 
     public ListaCache(int tamanoParam, String idParam)
     {
-        tiempoElemento = DEFAULT_ELEMENTO;
         id = idParam;
-        vida = VIDA_DEFAULT;
-        tiempo = TIEMPO_DEFAULT;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = TIEMPO_DEFAULT;
         tamano = tamanoParam;
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
     }
 
+    //sin tiempoVidaElemento por elemento
+    public ListaCache(int tamanoParam, int tiempoVidaCacheParam,int tiempoParam,String idParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+    }
+
+    public ListaCache( int tamanoParam, int tiempoVidaCacheParam,String idParam)
+    {
+        id = idParam;
+        tiempoVidaElemento = TIEMPO_DEFAULT;
+        tamano = tamanoParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+    }
 
     public void destruirCache()
     {
-        if(vida!=VIDA_DEFAULT)
+        if(tiempoVidaCache!=tiempoVidaCache_DEFAULT)
         {}
         else
         {
