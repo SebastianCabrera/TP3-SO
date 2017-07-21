@@ -12,13 +12,19 @@ public class Main {
         try
         {
             // create our mysql database connection
-            String myDriver = "org.gjt.mm.mysql.Driver"; //Si no es así es con com.mysql.jdbc.Driver
+            String myDriver = "com.mysql.jdbc.Driver"; //Si no es así es con    org.gjt.mm.mysql.Driver
             String myUrl = "jdbc:mysql://localhost/wiki"; //Siendo wiki el nombre de la base de datos
-            Class.forName(myDriver);
-            Connection conn = DriverManager.getConnection(myUrl, "root", "EstaSeriaUnaContrasena"); //
+            try {
+                Class.forName(myDriver);
+            } catch (ClassNotFoundException e) {
+                System.out.println("Where is your MySQL JDBC Driver?");
+                e.printStackTrace();
+                return;
+            }
+            Connection conn = DriverManager.getConnection(myUrl, "root", "SuContrasena"); //
 
             //Este seria el SELECT a implementar
-            String query = "SELECT * FROM page WHERE page_id = x"; //En x se pondría el id ingresado por el usuario
+            String query = "SELECT * FROM page WHERE page_id = 10"; //En vez de 10 se pondría el id ingresado por el usuario
             //String query = "SELECT * FROM page WHERE page_title = x"; //En x se pondría el nombre de la pagina ingresada por el usuario
 
             // create the java statement
@@ -55,7 +61,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-	    System.out.println("Hello my baby, hello my honey");
+
 	    searchDB();
     }
 }
