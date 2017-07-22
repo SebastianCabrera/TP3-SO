@@ -47,10 +47,9 @@ public class TestSinCache {
         int opcion = 1;
         try
         {
-
             // create our mysql database connection
             String myDriver = "com.mysql.jdbc.Driver"; //Si no es así es con    org.gjt.mm.mysql.Driver
-            String myUrl = "jdbc:mysql://localhost/wiki"; //Siendo wiki el nombre de la base de datos
+            String myUrl = "jdbc:mysql://localhost/wiki?autoReconnect=true&useSSL=false"; //Siendo wiki el nombre de la base de datos
             try {
                 Class.forName(myDriver);
             } catch (ClassNotFoundException e) {
