@@ -65,7 +65,7 @@ public class ListaCacheLIFO extends ListaCache{
         {
             for(int i = 0; i<list.size(); i++)
             {
-                if(i == 0) //Primera iteracion
+                if(i == 0) //Primer valor encontrado
                 {
                     time = list.get(i).getAge();
                     key=list.get(i).getKey();
@@ -104,7 +104,7 @@ public class ListaCacheLIFO extends ListaCache{
                     var2.setAge();
                     list.get(i).myTimer.cancel(); //Se cancela el Timer del objeto que se va a sacar de la lista
                     list.set(i, var2);
-                    list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
+                    list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento*1000); //El objeto se elimina de la lista si se cumple el tiempo de vida
                 }
             }
         }
@@ -117,11 +117,17 @@ public class ListaCacheLIFO extends ListaCache{
             {
                 if(list.get(i) == var2)
                 {
-                    list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
+                    list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento*1000); //El objeto se elimina de la lista si se cumple el tiempo de vida
                 }
             }
         }
         System.out.println("Se usó el put de ListaCacheLIFO.");
+        try
+        {
+            Thread.sleep(500);
+        }
+        catch(InterruptedException e){}
+
     }
 
 }
