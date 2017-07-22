@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.SQLException;
 /**
  * Created by Sebastián on 20/7/2017.
  */
@@ -14,9 +17,37 @@ public class TestSinCache {
 
     public void searchDBId()
     {
+/*
+        Connection conn = null;
+
+        String driver   = "com.mysql.jdbc.Driver";
+        String db       = "wiki";
+        String url      = "jdbc:mysql://localhost/" + db;
+        String user     = "root";
+        String pass     = "6220";
+
+        try {
+            try {
+                Class.forName(driver);
+            }
+            catch (ClassNotFoundException e) {
+                System.out.println("Where is your MySQL JDBC Driver?");
+                e.printStackTrace();
+                return;
+            }
+            conn = DriverManager.getConnection(url,user,pass);
+            System.out.println("Connected to database : " + db);
+        } catch (SQLException e) {
+            System.out.println("SQLException: "+e.getMessage());
+            System.out.println("SQLState: "+e.getSQLState());
+            System.out.println("VendorError: "+e.getErrorCode());
+        }
+*/
+
         int opcion = 1;
         try
         {
+
             // create our mysql database connection
             String myDriver = "com.mysql.jdbc.Driver"; //Si no es así es con    org.gjt.mm.mysql.Driver
             String myUrl = "jdbc:mysql://localhost/wiki"; //Siendo wiki el nombre de la base de datos
@@ -27,12 +58,13 @@ public class TestSinCache {
                 e.printStackTrace();
                 return;
             }
-            Connection conn = DriverManager.getConnection(myUrl, "root", "SuContrasena"); //
+            Connection conn = DriverManager.getConnection(myUrl, "root", "6220"); //
 
             while (opcion == 1)
             {
+                opcion = 2;
                 System.out.print("Digite id de pagina que quiera buscar \n");
-                String idToSearch = System.console().readLine();
+                String idToSearch = "10";//= System.console().readLine();
                 int idInt = Integer.parseInt(idToSearch);
 
                 //Este seria el SELECT a implementar
