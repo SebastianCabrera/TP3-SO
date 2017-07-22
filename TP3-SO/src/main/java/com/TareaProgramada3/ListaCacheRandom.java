@@ -41,7 +41,7 @@ public class ListaCacheRandom extends ListaCache{
         if (list.size() == tamano) //Si la lista esta llena
         {
             int keyVictim = random();
-            for(int i=0; i<tamano; i++)
+            for(int i=0; i<list.size(); i++)
             {
                 if(list.get(i).getKey() == keyVictim)
                 {
@@ -58,7 +58,7 @@ public class ListaCacheRandom extends ListaCache{
             var2.setKey(var1);
             var2.setAge();
             list.add(var2);
-            for(int i=0; i<tamano; i++)
+            for(int i=0; i<list.size(); i++)
             {
                 if(list.get(i) == var2)
                 {

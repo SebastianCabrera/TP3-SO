@@ -1,6 +1,9 @@
 package com.TareaProgramada3;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
+
 /**
  * Created by Sebastián on 19/7/2017.
  */
@@ -11,6 +14,17 @@ public class ListaCacheFIFO extends ListaCache{
 
     }
 
+    public ListaCacheFIFO(int tamanoParam, String idParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
     /// Esta función regresa la llave asignada al objeto más antiguo en la lista
     /// \return[out] int - Devuelve la llave del objeto seleccionado como victima
     public int fifo()
@@ -19,7 +33,7 @@ public class ListaCacheFIFO extends ListaCache{
         int key = 0;
         if(!list.isEmpty())
         {
-            for(int i = 0; i<tamano; i++)
+            for(int i = 0; i<list.size(); i++)
             {
                 if(i == 0) //Primera iteracion
                 {
@@ -53,7 +67,7 @@ public class ListaCacheFIFO extends ListaCache{
         if (list.size() == tamano) //Si la lista esta llena
         {
             int keyVictim = fifo();
-            for(int i=0; i<tamano; i++)
+            for(int i=0; i<list.size(); i++)
             {
                 if(list.get(i).getKey() == keyVictim)
                 {
@@ -69,13 +83,15 @@ public class ListaCacheFIFO extends ListaCache{
         {
             var2.setKey(var1);
             var2.setAge();
+
             list.add(var2);
-            for(int i=0; i<tamano; i++)
+            for(int i=0; i<list.size(); i++)
             {
                 if(list.get(i) == var2)
                 {
                     list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
                 }
+
             }
         }
         System.out.println("Se usó el put de ListaCacheFIFO.");

@@ -20,7 +20,7 @@ public class ListaCacheLRU extends ListaCache{
         int key = 0;
         if(!list.isEmpty())
         {
-            for(int i = 0; i<tamano; i++)
+            for(int i = 0; i<list.size(); i++)
             {
                 if(i == 0) //Primera iteracion
                 {
@@ -53,7 +53,7 @@ public class ListaCacheLRU extends ListaCache{
         if (list.size() == tamano) //Si la lista esta llena
         {
             int keyVictim = lru();
-            for(int i=0; i<tamano; i++)
+            for(int i=0; i<list.size(); i++)
             {
                 if(list.get(i).getKey() == keyVictim)
                 {
@@ -70,7 +70,7 @@ public class ListaCacheLRU extends ListaCache{
             var2.setKey(var1);
             var2.setAge();
             list.add(var2);
-            for(int i=0; i<tamano; i++)
+            for(int i=0; i<list.size(); i++)
             {
                 if(list.get(i) == var2)
                 {

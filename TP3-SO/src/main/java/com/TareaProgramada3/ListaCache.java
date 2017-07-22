@@ -13,19 +13,20 @@ public class ListaCache implements Cache<Integer, ObjectC> {
     //Lista que se va a usar como cache
     ArrayList<ObjectC> list;
     //Nombre que se le va a asignar al cache
-    private String id;
+    public String id;
     //Tamaño del cache
     public int tamano = 10;
     //Tiempo que pasa entre cada ejecución de la función "clear"
-    private int tiempoVidaCache;
+    public int tiempoVidaCache;
     //Tiempo maximo que un objeto puede estar en el cache sin ser accesado
     public int tiempoVidaElemento;
-    //Default del tiempo de vida del contenido total del cache
-    private final int tiempoVidaCache_DEFAULT = -1; //Infinito
-    //Default del tiempo de vida de cada elemento sin ser accesado en el cache
-    private final int tiempoVidaElemento_DEFAULT = 3600; //Es decir, una hora de tiempoVidaElemento como máximo para cada objeto en el cache
     //Semaforo para evitar problemas de sincronización con respecto al "entry lifetime"
-    private Semaphore sync;
+    public Semaphore sync;
+    //Default del tiempo de vida del contenido total del cache
+    public final int tiempoVidaCache_DEFAULT = -1; //Infinito
+    //Default del tiempo de vida de cada elemento sin ser accesado en el cache
+    public final int tiempoVidaElemento_DEFAULT = 3600; //Es decir, una hora de tiempoVidaElemento como máximo para cada objeto en el cache
+
 
     //Se presentan 4 constructores, considerando que los unicos dos valores obligatorios son "id" y "tamano"
 
@@ -143,9 +144,8 @@ public class ListaCache implements Cache<Integer, ObjectC> {
         return retornoC;
     }
 
-
     //esta función no se debería ejecutar por como funciona la herencia, se escribió un mensaje para detectar el error
-    public void put(Integer llave, ObjectC objeto) //Hay necesidad de implementarla aquí?
+    public void put(Integer llave, ObjectC objeto) 
     {
         System.out.println("Se usó el put de ListaCache.");
     }
@@ -180,7 +180,7 @@ public class ListaCache implements Cache<Integer, ObjectC> {
     /// Esta función saca todos los objetos que se encuentren actualmente en el cache
     public void clear()
     {
-        for(int i=0; i<tamano; i++)
+        for(int i=0; i<list.size(); i++)
         {
             list.get(i).myTimer.cancel(); //Se cancela el Timer de todos los objetos
         }
