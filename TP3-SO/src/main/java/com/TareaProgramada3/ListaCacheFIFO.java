@@ -9,12 +9,31 @@ import java.util.concurrent.Semaphore;
  */
 public class ListaCacheFIFO extends ListaCache{
 
-    public ListaCacheFIFO()
-    {
+    public ListaCacheFIFO(){}
 
+    public ListaCacheFIFO(String idParam, int tamanoParam, int tiempoVidaCacheParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
     }
 
-    /*public ListaCacheFIFO(int tamanoParam, String idParam)
+    public ListaCacheFIFO(int tamanoParam, String idParam, int tiempoVidaElemParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
+    public ListaCacheFIFO(int tamanoParam, String idParam)
     {
         id = idParam;
         tamano = tamanoParam;
@@ -23,7 +42,18 @@ public class ListaCacheFIFO extends ListaCache{
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
         sync = new Semaphore(1);
-    }*/
+    }
+
+    public ListaCacheFIFO(int tamanoParam, int tiempoVidaCacheParam,int tiempoVidaElemParam,String idParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoVidaElemParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
 
     /// Esta función regresa la llave asignada al objeto más antiguo en la lista
     /// \return[out] int - Devuelve la llave del objeto seleccionado como victima

@@ -1,15 +1,58 @@
 package com.TareaProgramada3;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.Semaphore;
 
 /**
  * Created by Sebastián on 19/7/2017.
  */
 public class ListaCacheRandom extends ListaCache{
 
-    public ListaCacheRandom()
-    {
+    public ListaCacheRandom(){}
 
+    public ListaCacheRandom(String idParam, int tamanoParam, int tiempoVidaCacheParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
+    public ListaCacheRandom(int tamanoParam, String idParam, int tiempoVidaElemParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
+    public ListaCacheRandom(int tamanoParam, String idParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
+    public ListaCacheRandom(int tamanoParam, int tiempoVidaCacheParam,int tiempoVidaElemParam,String idParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoVidaElemParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
     }
 
     /// Esta función regresa la llave asignada a un objeto al azar en la lista

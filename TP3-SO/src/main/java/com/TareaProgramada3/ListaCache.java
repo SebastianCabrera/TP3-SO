@@ -145,7 +145,7 @@ public class ListaCache implements Cache<Integer, ObjectC> {
     }
 
     //esta función no se debería ejecutar por como funciona la herencia, se escribió un mensaje para detectar el error
-    public void put(Integer llave, ObjectC objeto) 
+    public void put(Integer llave, ObjectC objeto)
     {
         System.out.println("Se usó el put de ListaCache.");
     }

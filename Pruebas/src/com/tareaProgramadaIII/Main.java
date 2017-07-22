@@ -13,6 +13,6 @@ public class Main {
 
 	    TestSinCache tSC = new TestSinCache();
 	    tSC.searchDBId(); //En las pruebas solo se utilizaria un tipo de busqueda
-	    //tSC.searchDBINombre();
+	    //tSC.searchDBNombre();
     }
 }

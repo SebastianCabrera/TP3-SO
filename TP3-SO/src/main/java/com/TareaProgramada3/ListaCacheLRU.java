@@ -1,15 +1,58 @@
 package com.TareaProgramada3;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
 /**
  * Created by Sebastián on 19/7/2017.
  */
 public class ListaCacheLRU extends ListaCache{
 
-    public ListaCacheLRU()
-    {
+    public ListaCacheLRU(){}
 
+    public ListaCacheLRU(String idParam, int tamanoParam, int tiempoVidaCacheParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
+    public ListaCacheLRU(int tamanoParam, String idParam, int tiempoVidaElemParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
+    public ListaCacheLRU(int tamanoParam, String idParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCache_DEFAULT;
+        tiempoVidaElemento = tiempoVidaElemento_DEFAULT;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
+    }
+
+    public ListaCacheLRU(int tamanoParam, int tiempoVidaCacheParam,int tiempoVidaElemParam,String idParam)
+    {
+        id = idParam;
+        tamano = tamanoParam;
+        tiempoVidaCache = tiempoVidaCacheParam;
+        tiempoVidaElemento = tiempoVidaElemParam;
+        list = new ArrayList<ObjectC>(tamano);
+        this.destruirCache();
+        sync = new Semaphore(1);
     }
 
     /// Esta función regresa la llave asignada al objeto que lleva mas tiempo sin ser referenciado en la lista
