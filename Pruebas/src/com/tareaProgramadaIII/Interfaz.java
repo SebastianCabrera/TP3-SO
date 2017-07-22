@@ -44,7 +44,7 @@ public class Interfaz
     JLabel labelFuncion;
     JLabel labelIntervalo;
     JTextField txtIdConCache;
-    //JLabel fondo;
+    JLabel fondo;
     JLabel resultado;
     JLabel labelIdCache;
     JTextField txtTituloConCache;
@@ -52,7 +52,7 @@ public class Interfaz
     JTextField txtIdSinCache;
     JTextField txtIdSinCache2;
     ImageIcon imagenFondo;
-    //private final String IMAGEN_FONDO = "fondo.jpg";
+    private final String IMAGEN_FONDO = "fondo.jpg";
     ////
     /**
      * Constructor for objects of class Interfaz
@@ -135,9 +135,9 @@ public class Interfaz
         txtIdSinCache.setBounds(170,100,120,50);
         txtIdSinCache.setOpaque(true);
 
-        //imagenFondo = new ImageIcon(this.getClass().getResource(IMAGEN_FONDO));
-        //fondo = new JLabel(imagenFondo);
-        //fondo.setBounds(0,0,600,400);
+        imagenFondo = new ImageIcon(this.getClass().getResource(IMAGEN_FONDO));
+        fondo = new JLabel(imagenFondo);
+        fondo.setBounds(0,0,600,400);
 
         marco.add(labelIdCache);
         marco.add(ayuda);
@@ -149,7 +149,8 @@ public class Interfaz
         marco.add(labelFuncion);
         marco.add(labelIntervalo);
         marco.add(labelError);
-        //marco.add(fondo);
+
+        marco.add(fondo);
 
         marco.pack();
         marco.setVisible(true);
