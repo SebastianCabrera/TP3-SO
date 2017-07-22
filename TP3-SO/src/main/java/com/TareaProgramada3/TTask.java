@@ -9,16 +9,20 @@ import java.util.TimerTask;
 public class TTask extends TimerTask{
 
     private final int i;
-    private final ArrayList<ObjectC> aL;
+    //private final ArrayList<ObjectC> aL;
+    private final ListaCache lCache;
 
-    TTask(int i, ArrayList<ObjectC> aL)
+    TTask(int i, ListaCache lCache)
     {
         this.i = i;
-        this.aL = aL;
+        this.lCache = lCache;
     }
 
     public void run()
     {
-        aL.remove(i);
+        //Se consigue la llave del objeto cuyo entry lifetime se acabó
+        int llave = lCache.list.get(i).getKey();
+        //Se saca el objeto de la lista con la funcion "evict"
+        lCache.evict(llave);
     }
 }

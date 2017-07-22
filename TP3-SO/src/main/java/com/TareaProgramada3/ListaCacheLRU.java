@@ -12,7 +12,8 @@ public class ListaCacheLRU extends ListaCache{
 
     }
 
-    //Regresa la key asignada al objeto que lleva mas tiempo sin ser referenciado en la lista
+    /// Esta función regresa la llave asignada al objeto que lleva mas tiempo sin ser referenciado en la lista
+    /// \return[out] int - Devuelve la llave del objeto seleccionado como victima
     public int lru()
     {
         LocalDateTime eLifeTime = null;
@@ -43,6 +44,9 @@ public class ListaCacheLRU extends ListaCache{
         }
     }
 
+    /// Esta función guarda un objeto en la lista, y si la lista está llena saca a un objeto de esta
+    /// \param[in] var1 - La llave que se va a asignar al objeto que se vaya a introducir en la lista
+    /// \param[in] var2 - El objeto que se va a introducir en la lista
     public void put(Integer var1, ObjectC var2)
     {
 
@@ -57,7 +61,7 @@ public class ListaCacheLRU extends ListaCache{
                     var2.setAge();
                     list.get(i).myTimer.cancel(); //Se cancela el Timer del objeto que se va a sacar de la lista
                     list.set(i, var2);
-                    list.get(i).myTimer.schedule(new TTask(i, this.list), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
+                    list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
                 }
             }
         }
@@ -70,7 +74,7 @@ public class ListaCacheLRU extends ListaCache{
             {
                 if(list.get(i) == var2)
                 {
-                    list.get(i).myTimer.schedule(new TTask(i, this.list), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
+                    list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento); //El objeto se elimina de la lista si se cumple el tiempo de vida
                 }
             }
         }

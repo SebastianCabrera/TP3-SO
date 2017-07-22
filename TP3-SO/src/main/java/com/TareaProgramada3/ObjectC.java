@@ -8,20 +8,22 @@ import java.util.Timer;
  */
 public class ObjectC {
 
-    //private int hour=0;
-    //private int minute=0;
-    //private int second=0;
+    //La hora en la que se guarda el objeto en el cache
     LocalDateTime now;
+    //La hora en la que se guarda el objeto en el cache (se vuelve a poner si el objeto es referenciado)
     LocalDateTime eLifeTime;
+    //El objeto en sí
     private Object value=0;
+    //La llave asignada a este objeto
     private int key=0;
     private int entryLifetime=0; //Esto debería estara aqui? Ya se define en ListaCache
+    //Timer utilizado para medir el "entry lifetime" del objeto
     public Timer myTimer = new Timer(true);
 
     public ObjectC()
     {}
 
-    public void seteLifeTime() //Que se guarde la hora también cada vez que es refrerenciado
+    public void seteLifeTime() //Que se guarde la hora también cada vez que es referenciado
     {
         eLifeTime = LocalDateTime.now();
     }
