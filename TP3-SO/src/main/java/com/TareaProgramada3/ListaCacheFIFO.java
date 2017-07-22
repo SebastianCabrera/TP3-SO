@@ -14,7 +14,7 @@ public class ListaCacheFIFO extends ListaCache{
 
     }
 
-    public ListaCacheFIFO(int tamanoParam, String idParam)
+    /*public ListaCacheFIFO(int tamanoParam, String idParam)
     {
         id = idParam;
         tamano = tamanoParam;
@@ -23,7 +23,7 @@ public class ListaCacheFIFO extends ListaCache{
         list = new ArrayList<ObjectC>(tamano);
         this.destruirCache();
         sync = new Semaphore(1);
-    }
+    }*/
 
     /// Esta función regresa la llave asignada al objeto más antiguo en la lista
     /// \return[out] int - Devuelve la llave del objeto seleccionado como victima

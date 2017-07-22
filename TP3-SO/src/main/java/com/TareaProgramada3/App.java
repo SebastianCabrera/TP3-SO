@@ -16,8 +16,8 @@ public class App //Aqui solo se van a hacer pequeñas pruebas, no tiene nada que
         //}
         String id = "Sebastian";
         int cantidad = 8;
-        //ListaCache tmp = new ListaCache();
-        ListaCacheFIFO pruebaFIFO = new ListaCacheFIFO(cantidad, id);
+        ListaCache pruebaFIFO = new ListaCache(cantidad, id);
+        pruebaFIFO = new ListaCacheFIFO();
         pruebaFIFO.put(1, objTmp);
         ObjectC respuesta = pruebaFIFO.get(1);
         if(respuesta != null)
@@ -29,7 +29,7 @@ public class App //Aqui solo se van a hacer pequeñas pruebas, no tiene nada que
             System.out.print("La direccion que busco esta vacia\n");
         }
 
-        //pruebaFIFO.clear();
+        pruebaFIFO.clear();
     }
 
 
