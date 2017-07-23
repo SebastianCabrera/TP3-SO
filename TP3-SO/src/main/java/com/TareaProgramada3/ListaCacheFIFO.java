@@ -103,6 +103,7 @@ public class ListaCacheFIFO extends ListaCache{
                 {
                     var2.setKey(var1);
                     var2.setAge();
+                    var2.seteLifeTime();
                     list.get(i).myTimer.cancel(); //Se cancela el Timer del objeto que se va a sacar de la lista
                     list.set(i, var2);
                     list.get(i).myTimer.schedule(new TTask(i, this), (long)tiempoVidaElemento*1000); //El objeto se elimina de la lista si se cumple el tiempo de vida
@@ -113,7 +114,7 @@ public class ListaCacheFIFO extends ListaCache{
         {
             var2.setKey(var1);
             var2.setAge();
-
+            var2.seteLifeTime();
             list.add(var2);
             for(int i=0; i<list.size(); i++)
             {

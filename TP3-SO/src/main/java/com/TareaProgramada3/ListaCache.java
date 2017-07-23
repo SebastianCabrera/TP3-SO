@@ -132,7 +132,8 @@ public class ListaCache implements Cache<Integer, ObjectC> {
             {
                 if(list.get(contador).getKey()==var1)
                 {
-                    retornoC = list.get(contador);//posiblemente hay que convertir Integer a int pero no estoy seguro
+                    retornoC = list.get(contador);
+                    list.get(contador).seteLifeTime(); //Se referencia, por lo que su valor eLifeTime se sobreescribe
                 }
             }
         }
