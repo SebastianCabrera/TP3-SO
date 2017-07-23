@@ -16,17 +16,13 @@ public class ObjectC {
     private Object value=0;
     //La llave asignada a este objeto
     private int key=0;
-    private int entryLifetime=0; //Esto debería estara aqui? Ya se define en ListaCache
     //Timer utilizado para medir el "entry lifetime" del objeto
     public Timer myTimer = new Timer(true);
 
     public ObjectC()
     {}
 
-    public void seteLifeTime() //Que se guarde la hora también cada vez que es referenciado
-    {
-        eLifeTime = LocalDateTime.now();
-    }
+    public void seteLifeTime() { eLifeTime = LocalDateTime.now(); } //Que se guarde la hora también cada vez que es referenciado
 
     public LocalDateTime geteLifeTime()
     {
@@ -43,31 +39,20 @@ public class ObjectC {
         return now;
     }
 
-    public Object getValue() {
-        return value;
-    }
-
     public void setValue(Object value) {
         this.value = value;
     }
 
-    public int getKey() {
-        return key;
+    public Object getValue() {
+        return value;
     }
 
     public void setKey(int key) {
         this.key = key;
     }
 
-    public int getEntryLifetime() {
-        return entryLifetime;
+    public int getKey() {
+        return key;
     }
-    
-    public void setEntryLifetime(int entryLifetime) {
-        this.entryLifetime = entryLifetime;
-    }
-
-
-
 
 }
