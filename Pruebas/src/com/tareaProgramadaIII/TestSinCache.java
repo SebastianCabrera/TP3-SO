@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -13,38 +14,17 @@ import java.sql.SQLException;
  */
 public class TestSinCache {
 
-    public TestSinCache(){}
+    String usuario;
+    String pass;
 
-    public void searchDBId()
+    public TestSinCache(String usuarioParam, String passParam)
     {
-/*
-        Connection conn = null;
+        usuario=usuarioParam;
+        pass=passParam;
+    }
 
-        String driver   = "com.mysql.jdbc.Driver";
-        String db       = "wiki";
-        String url      = "jdbc:mysql://localhost/" + db;
-        String user     = "root";
-        String pass     = "6220";
-
-        try {
-            try {
-                Class.forName(driver);
-            }
-            catch (ClassNotFoundException e) {
-                System.out.println("Where is your MySQL JDBC Driver?");
-                e.printStackTrace();
-                return;
-            }
-            conn = DriverManager.getConnection(url,user,pass);
-            System.out.println("Connected to database : " + db);
-        } catch (SQLException e) {
-            System.out.println("SQLException: "+e.getMessage());
-            System.out.println("SQLState: "+e.getSQLState());
-            System.out.println("VendorError: "+e.getErrorCode());
-        }
-*/
-
-        int opcion = 1;
+    public void searchDBId(String idToSearch)
+    {
         try
         {
             // create our mysql database connection
@@ -57,13 +37,8 @@ public class TestSinCache {
                 e.printStackTrace();
                 return;
             }
-            Connection conn = DriverManager.getConnection(myUrl, "root", "6220"); //
+            Connection conn = DriverManager.getConnection(myUrl, usuario, pass); //
 
-            while (opcion == 1)
-            {
-                opcion = 2;
-                System.out.print("Digite id de pagina que quiera buscar \n");
-                String idToSearch = "10";//= System.console().readLine();
                 int idInt = Integer.parseInt(idToSearch);
 
                 //Este seria el SELECT a implementar
@@ -91,14 +66,12 @@ public class TestSinCache {
                     int len = rs.getInt("page_len");
 
                     // print the results
-                    System.out.format("%s, %s, %s, %s, %s, %s, %s, %s, %s\n", id, namespace, title, counter, is_redirect, is_new, random, latest, len);
+
+                    JOptionPane.showMessageDialog(null, "id: "+id+"\n namespace: "+namespace+ "\n title: "+ title+
+                            "\n counter: "+ counter+ "\n is_redirect: "+is_redirect+ "\n is_new: "+is_new+ "\n random: "+random+
+                            "\n latest: "+latest+ "\n len: "+ len);
                 }
                 st.close();
-
-                System.out.print("Quiere buscar otra pagina? 0=No 1=Si\n"); //Para verificar cuando desea dejar de hacer consultas
-                String respuesta = System.console().readLine();
-                opcion = Integer.parseInt(respuesta);
-            }
         }
         catch (Exception e)
         {
@@ -107,9 +80,8 @@ public class TestSinCache {
         }
     }
 
-    public void searchDBNombre()
+    public void searchDBNombre(String nameToSearch)
     {
-        int opcion = 1;
         try
         {
             // create our mysql database connection
@@ -122,15 +94,11 @@ public class TestSinCache {
                 e.printStackTrace();
                 return;
             }
-            Connection conn = DriverManager.getConnection(myUrl, "root", "SuContrasena"); //
+            Connection conn = DriverManager.getConnection(myUrl, usuario, pass); //
 
-            while (opcion == 1)
-            {
-                System.out.print("Digite id de pagina que quiera buscar \n");
-                String nameToSearch = System.console().readLine();
 
                 //Este seria el SELECT a implementar
-                String query = "SELECT * FROM page WHERE page_id = " + nameToSearch;
+            String query = "SELECT * FROM page WHERE page_title = '" + nameToSearch+"'";
 
                 // create the java statement
                 Statement st = conn.createStatement();
@@ -154,14 +122,14 @@ public class TestSinCache {
                     int len = rs.getInt("page_len");
 
                     // print the results
-                    System.out.format("%s, %s, %s, %s, %s, %s, %s, %s, %s\n", id, namespace, title, counter, is_redirect, is_new, random, latest, len);
+                    JOptionPane.showMessageDialog(null, "id: "+id+"\n namespace: "+namespace+ "\n title: "+ title+
+                            "\n counter: "+ counter+ "\n is_redirect: "+is_redirect+ "\n is_new: "+is_new+ "\n random: "+random+
+                            "\n latest: "+latest+ "\n len: "+ len);
                 }
                 st.close();
 
-                System.out.print("Quiere buscar otra pagina? 0=No 1=Si\n"); //Para verificar cuando desea dejar de hacer consultas
-                String respuesta = System.console().readLine();
-                opcion = Integer.parseInt(respuesta);
-            }
+
+
         }
         catch (Exception e)
         {

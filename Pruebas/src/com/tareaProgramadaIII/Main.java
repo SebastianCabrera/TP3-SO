@@ -13,6 +13,7 @@ public class Main implements ActionListener
     //http://alvinalexander.com/java/java-mysql-select-query-example
         JOptionPane mensajes;
         Interfaz interfaz;
+        TestSinCache adminSinCache;
         /**
          * Constructor for objects of class Controlador
          */
@@ -23,7 +24,28 @@ public class Main implements ActionListener
 
         public void iniciar()
         {
-            interfaz = new Interfaz(this);
+
+
+                String usuario = mensajes.showInputDialog(null, "Ingrese el usuario de la base de datos");
+                if(usuario== null || usuario.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"No ingresó el usuario, se utilizará el usuairo por defecto: 'root'");
+                    usuario = "root";
+                }else{}
+
+
+                String pass = mensajes.showInputDialog(null, "Ingrese la contraseña del usuario para la base de datos");
+
+                if(pass == null || pass.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"No ingresó la contraseña se utilizará la contraseña por defecto " +
+                            "pero lo más probable es que no funcione");
+                    pass = "6220";
+                }
+                else{}
+                    adminSinCache = new TestSinCache(usuario, pass);
+                    interfaz = new Interfaz(this);
+
         }
 
         /**
@@ -40,7 +62,8 @@ public class Main implements ActionListener
                 modo = false;
                 interfaz.actualizar(this);
                 busqueda = interfaz.getTextTxtTituloSinCache();
-                buscador.buscar(busqueda,modo);
+                //buscador.buscar(busqueda,modo);
+                adminSinCache.searchDBNombre(busqueda);
             }
             else
             {
@@ -54,7 +77,8 @@ public class Main implements ActionListener
                 modo = false;
                 busqueda = interfaz.getTextTxtIdSinCache();
                 interfaz.actualizar(this);
-                buscador.buscar(busqueda,modo);
+                //buscador.buscar(busqueda,modo);
+                adminSinCache.searchDBId(busqueda);
             }
             else
             {
