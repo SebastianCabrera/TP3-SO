@@ -22,6 +22,7 @@ public class Main implements ActionListener
             mensajes = new JOptionPane();
         }
 
+        //Main de la aplicación
         public void iniciar()
         {
 
@@ -88,7 +89,9 @@ public class Main implements ActionListener
                 modo = true;
                 busqueda = interfaz.getTextTxtTituloConCache();
                 interfaz.actualizar(this);
-                buscador.buscar(busqueda,modo);
+                //aqui va el metodo para las pruebas
+                TestConCache admin = new TestConCache();
+                admin.searchDBNombre(busqueda);
             }
             else
             {
@@ -99,7 +102,11 @@ public class Main implements ActionListener
                 modo = true;
                 busqueda = interfaz.getTextTxtIdSinCache();
                 interfaz.actualizar(this);
-                buscador.buscar(busqueda,modo);
+                //aqui va el metodo para las pruebas
+                TestConCache admin = new TestConCache();
+                admin.searchDBId(busqueda);
+
+
             }
             else
             {

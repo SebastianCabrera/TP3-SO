@@ -36,6 +36,8 @@ import javax.swing.JOptionPane;
  * @author (your name)
  * @version (a version number or a date)
  */
+
+//maneja la interfaz gráfica
 public class Interfaz
 {
     // instance variables - replace the example below with your own
@@ -61,7 +63,7 @@ public class Interfaz
     private final String IMAGEN_FONDO = "fondo.jpg";
     ////
     /**
-     * Constructor for objects of class Interfaz
+     * Constructor for objects of class Interfaz, también establece sus características
      */
     public Interfaz(Main controlador)
     {
@@ -177,6 +179,9 @@ public class Interfaz
 
     }
 
+    /*
+    Las siguiestes cuatro funciones devuelve el contenido de las cajas de texto
+    * */
     String getTextTxtIdSinCache()
     {
         return txtIdSinCache.getText();
@@ -198,13 +203,13 @@ public class Interfaz
     }
 
 
-
+//vacía las cajas de texto
     public void actualizar(Main controlador)
     {
-        /*
+
         txtTituloConCache.setText("");
         txtTituloSinCache.setText("");
         txtIdConCache.setText("");
-        txtIdSinCache.setText("");*/
+        txtIdSinCache.setText("");
     }
 }
