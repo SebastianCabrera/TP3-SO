@@ -6,14 +6,14 @@ import java.util.Timer;
 /**
  * Created by Sebastián on 19/7/2017.
  */
-public class ObjectC {
+public class ObjectC <V>{
 
     //La hora en la que se guarda el objeto en el cache
     LocalDateTime now;
     //La hora en la que se guarda el objeto en el cache (se vuelve a poner si el objeto es referenciado)
     LocalDateTime eLifeTime;
     //El objeto en sí
-    private Object value=0;
+    private V value= null;
     //La llave asignada a este objeto
     private int key=0;
     //Timer utilizado para medir el "entry lifetime" del objeto
@@ -39,11 +39,11 @@ public class ObjectC {
         return now;
     }
 
-    public void setValue(Object value) {
+    public void setValue(V value) {
         this.value = value;
     }
 
-    public Object getValue() {
+    public V getValue() {
         return value;
     }
 

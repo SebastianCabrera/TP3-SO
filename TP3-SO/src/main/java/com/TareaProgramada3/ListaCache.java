@@ -88,15 +88,38 @@ public class ListaCache implements Cache<Integer, ObjectC> {
         }
     }
 
-    String buscarPorTitulo(String titulo)  //Esta y la de id no deberia implementarse en el proyecto de pruebas?
+    Pagina buscarPorTitulo(String titulo)  //Esta y la de id no deberia implementarse en el proyecto de pruebas?
     {
+        String tituloComparacion = "";
+        int i = 0;
+        boolean seguir = true;
+        while (seguir) {
+            ObjectC<Pagina> temp = new ObjectC<Pagina>();
+            temp = list.get(i);
+            tituloComparacion = temp.getValue().getTitle();
+            if (tituloComparacion == titulo) {
+                seguir = false;
+                return temp.getValue();
+                //encontrado
 
+            } else {
+                tituloComparacion = null;
+            }
+            if(i < list.size())
+            {
+                seguir = false;
+            }
+            else{i++;}
+        }
         return null; //Al final de estas dos funciones se debe volver a guardar la hora en el eLifeTime del objeto
     }
 
-    String buscarPorID(String idParam)
+    Pagina buscarPorID(int idParam)
     {
-        return null;
+        ObjectC<Pagina> temp = new ObjectC<Pagina>();
+        temp = list.get(idParam);
+        list.get(idParam).seteLifeTime();
+        return temp.getValue();
     }
 
     void matarObjeto(int key)
