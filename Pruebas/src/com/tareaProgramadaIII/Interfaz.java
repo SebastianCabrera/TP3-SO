@@ -21,6 +21,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.SwingConstants;
 
+
+
+import java.awt.event.*;
+
+
+
 import javax.swing.JOptionPane;
 
 ///////////////////////////
@@ -154,6 +160,15 @@ public class Interfaz
 
         marco.pack();
         marco.setVisible(true);
+
+        marco.addWindowListener( new WindowAdapter()
+        {
+
+            public void windowClosing( WindowEvent e ) {
+                System.exit( 0 );
+            }
+        } );
+
     }
 
     //.setBounds(315,100,120,50);
@@ -181,6 +196,8 @@ public class Interfaz
     {
         return txtTituloConCache.getText();
     }
+
+
 
     public void actualizar(Main controlador)
     {

@@ -5,6 +5,20 @@ package com.TareaProgramada3;
  */
 public class Pagina
 {
+    int id;
+    int namespace;
+    String title;
+    int counter;
+    int is_redirect;
+    int is_new;
+    double random;
+    int latest;
+    int len;
+
+    Pagina()
+    {
+
+    }
 
     public int getId() {
         return id;
@@ -79,19 +93,6 @@ public class Pagina
         this.len = len;
     }
 
-    int id;
-    int namespace;
-    String title;
-    int counter;
-    int is_redirect;
-    int is_new;
-    double random;
-    int latest;
-    int len;
 
-    Pagina()
-    {
-
-    }
 
 }
